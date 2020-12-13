@@ -13,4 +13,3 @@
 - plot both results onto a graph
 - calculate difference between real values and predicted values
 - possibly: play with prophet library to improve predictions 
->>>>>>> 653d10adf9f7b943e7cf7a9a1403be53e8f44ea0
