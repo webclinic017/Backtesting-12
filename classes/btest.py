@@ -9,8 +9,11 @@ class backtest():
 
     def print_graph(self):
         ax = self.d_returns.plot()
+        
 
         self.prediction.plot(ax=ax)
+        ax.legend(['actual', 'prediction'])
+        ax.set(title = "Actual vs. Prediction", xlabel = "Time",  ylabel = "Return")
 
         plt.show()
     def error_graph(self):
