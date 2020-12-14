@@ -10,10 +10,13 @@ ratio = 0.90
 
 
 class data():
-
+    def __init__(self, ticker, start, end):
+        self.ticker = ticker
+        self.start = start
+        self.end = end
 
     def load_data(self):
-        stock = web.get_data_yahoo("AAPL", start = "2017-01-01", end = "2018-03-01")
+        stock = web.get_data_yahoo(self.ticker, start = self.start, end = self.end)
 
         price = stock["Adj Close"]
 

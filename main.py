@@ -3,7 +3,7 @@ from classes.predict import forecast
 from classes.btest import backtest
 
 def main():
-    test = data()
+    test = data("AAPL", "2010-01-01", "2018-03-01")
     test.load_data()
     #print(test.load_data())
     # create object here 
