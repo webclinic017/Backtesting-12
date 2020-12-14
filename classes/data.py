@@ -6,14 +6,15 @@ import matplotlib.pyplot as plt
 
 
 
-ratio = 0.90
+
 
 
 class data():
-    def __init__(self, ticker, start, end):
+    def __init__(self, ticker, start, end, ratio):
         self.ticker = ticker
         self.start = start
         self.end = end
+        self.ratio = ratio
 
     def load_data(self):
         stock = web.get_data_yahoo(self.ticker, start = self.start, end = self.end)
@@ -45,7 +46,7 @@ class data():
 
 
         row_len = d_returns.shape[0]
-        cut_off = round(ratio * row_len)
+        cut_off = round(self.ratio * row_len)
         self.period_forecast = row_len - cut_off
 
 
