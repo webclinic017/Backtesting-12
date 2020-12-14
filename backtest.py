@@ -33,11 +33,78 @@ d_returns = d_returns.reset_index(drop=True)
 d_returns = d_returns.set_index('ds')
 
 
+ratio = 0.90
+row_len = d_returns.shape[0]
+cut_off = round(ratio * row_len)
+period_forecast = row_len - cut_off 
+
+
+
+train = d_returns['y'][0:cut_off]
+train = train.to_frame()
+train.insert(0, 'ds', train.index)
+train = train.reset_index(drop=True)
+
+print(train)
+
+
+
+
+
+
+
+from fbprophet import Prophet
+# prophet preformance
+from fbprophet.diagnostics import cross_validation
+from fbprophet.diagnostics import performance_metrics
+from fbprophet.plot import plot_cross_validation_metric
+
+
+# set prophet model 
+prophet = Prophet(changepoint_prior_scale=0.15, daily_seasonality=False)
+
+
+
+prophet.fit(train)
+
+
+build_forecast = prophet.make_future_dataframe(periods=period_forecast, freq='D')
+
+forecast = prophet.predict(build_forecast)
+
+
+# plot forecasts
+#prophet.plot(forecast, xlabel='Date', ylabel='retrun')
+#plt.title('Predicted stock returns')
+# display graph
+#plt.show()
+
+
+# tell us more about the forecast
+#prophet.plot_components(forecast)
+
+
+
+print(forecast.iloc[-period_forecast:-1].yhat)
+prediction = pd.DataFrame()
+prediction['y'] = (forecast.iloc[-period_forecast:-1].yhat)
+d_returns = d_returns.reset_index(drop=True)
 print(d_returns)
 
+ax = d_returns.plot()
 
+prediction.plot(ax=ax)
 
+plt.show()
 
+result_df = pd.DataFrame()
+result_df['real'] = d_returns['y']
+result_df['prediction'] = prediction['y']
+result_df['Error'] = result_df['real'].sub(result_df['prediction'], axis = 0)
 
+result_df['Error'].plot()
+plt.show()
+abs(result_df['Error']).plot()
+plt.show()
 
 
