@@ -16,7 +16,7 @@
 
 
 ## Current outputs produced
-### Example: Apple stock from 2010-01-01 to 2018-03-01
+### Example: Google stock from 2010-01-01 to 2018-03-01
 
 ![](resources/Figure_1.png)
 ![](resources/Figure_2.png)
