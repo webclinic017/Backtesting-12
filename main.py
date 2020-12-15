@@ -1,19 +1,20 @@
-from classes.data import data
-from classes.predict import forecast
-from classes.btest import backtest
+from classes.data import Data
+from classes.predict import Prophesy
+from classes.btest import Backtest
 
 def main():
-    dataset = data("AAPL", "2010-01-01", "2018-03-01", 0.95)
+    #dataset = data("AAPL", "2010-01-01", "2018-03-01", 0.95)
+    dataset = Data("GOOGL", "2010-01-01", "2018-03-01", 0.95)
     dataset.load_data()
 
 
-    future = forecast(dataset.load_data(), dataset.get_periods())
-    future.predict()
+    future = Prophesy(dataset.load_data(), dataset.get_periods())
+    future.predict_future()
 
     future.print_details()
 
 
-    results = backtest(dataset.get_all_returns(), future.get_predictions())
+    results = Backtest(dataset.get_all_returns(), future.get_predictions())
     results.print_graph()
     results.error_graph()
 
