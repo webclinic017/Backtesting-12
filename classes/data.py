@@ -10,6 +10,10 @@ class Data():
         self.end = end
         self.ratio = ratio
 
+    def original_data(self):
+        stock = web.get_data_yahoo(self.ticker, start = self.start, end = self.end)
+        return stock
+
     def load_data(self):
         stock = web.get_data_yahoo(self.ticker, start = self.start, end = self.end)
 
