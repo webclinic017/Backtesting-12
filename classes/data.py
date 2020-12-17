@@ -28,6 +28,7 @@ class Data():
         d_returns.drop('Adj Close', axis=1, inplace=True) # drop original adj close price column
         d_returns = d_returns.reset_index(drop=True)
         d_returns = d_returns.set_index('ds')
+        self.d_returns = d_returns
 
         self.all_returns = d_returns
         row_len = d_returns.shape[0]
@@ -47,3 +48,9 @@ class Data():
     def get_all_returns(self):
         all_returns = self.all_returns.reset_index(drop=True)
         return all_returns
+    
+    def get_prepared_data(self):
+        d_returns = self.d_returns
+        d_returns.insert(0, 'ds', d_returns.index)
+        d_returns = d_returns.reset_index(drop=True)
+        return d_returns

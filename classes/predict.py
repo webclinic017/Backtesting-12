@@ -25,3 +25,13 @@ class Prophesy():
         prediction = pd.DataFrame()
         prediction['y'] = (self.forecast.iloc[-self.period_forecast:-1].yhat)
         return prediction
+
+    def plot_result(self, to_plot):
+        self.prophet.plot(to_plot)
+        plt.show()
+
+    def plot_only_predictions(self, to_plot, future_days):
+        to_print = to_plot[['ds','yhat']]
+        plt.plot(to_plot[-future_days:-1].yhat)
+        plt.show()
+        print(to_print[-future_days:-1])

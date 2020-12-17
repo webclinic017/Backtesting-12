@@ -10,5 +10,4 @@ class Explore():
         output = seasonal_decompose(self.data, model='multiplicative', period = period)
         output.plot().suptitle('Time series decomposition')
         plt.show()
-
         
