@@ -32,6 +32,6 @@
 The stock predicted was Google. The total prediction was 10 days into the future while having
 used past returns from 2010-01-01 until 2020-12-17 as training.
 
-![](Menu_1.png)
-![](Menu_2.png)
-![](Menu_3.png)
+![](resources/Menu_1.png)
+![](resources/Menu_2.png)
+![](resources/Menu_3.png)
