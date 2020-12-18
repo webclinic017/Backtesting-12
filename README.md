@@ -22,3 +22,16 @@
 ![](resources/Figure_2.png)
 ![](resources/Figure_3.png)
 ![](resources/Figure_4.png)
+
+### Example of selection 2. Explore data
+
+![](resources/Figure_5.png)
+
+### Example of selection 5. Predict without backtesting
+
+The stock predicted was Google. The total prediction was 10 days into the future while having
+used past returns from 2010-01-01 until 2020-12-17 as training.
+
+![](Menu_1.png)
+![](Menu_2.png)
+![](Menu_3.png)
