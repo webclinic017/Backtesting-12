@@ -17,7 +17,6 @@ def main():
       table.add_row("4.", "Display results")
       table.add_row("5.", "Predict without backtesting")
       table.add_row("0.", "Exit")
-
       console = Console()
       console.print(table)
 
