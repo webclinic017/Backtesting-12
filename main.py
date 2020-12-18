@@ -2,18 +2,25 @@ from classes.data import Data
 from classes.predict import Prophesy
 from classes.btest import Backtest
 from classes.dataex import Explore
+from rich import print
+from rich.console import Console
+from rich.table import Table
 
 def main():
     while True:
-      print ("\n Menu:")
-      print ("**********")
-      print (" 1. Load data")
-      print (" 2. Explore data")
-      print (" 3. Predict future")
-      print (" 4. See results")
-      print (" 5. Predict without backtesting")
-      print (" 0. Exit")
- 
+      table = Table(title="Menu")
+      table.add_column("Selection", justify="center", style="white", no_wrap=True)
+      table.add_column("Action", justify="left", style="yellow") 
+      table.add_row("1.", "Load data")
+      table.add_row("2.", "Explore data")
+      table.add_row("3.", "Predict future")
+      table.add_row("4.", "Display results")
+      table.add_row("5.", "Predict without backtesting")
+      table.add_row("0.", "Exit")
+
+      console = Console()
+      console.print(table)
+
       __choose_menu = int(input("Enter your choice: "))
       if __choose_menu == 1:
         user = input("Enter Stock ticker: ")
@@ -47,7 +54,6 @@ def main():
         exit(0)
       else:
         print ("Invalid Choice")
-
 
 if __name__ == "__main__":
     main()
